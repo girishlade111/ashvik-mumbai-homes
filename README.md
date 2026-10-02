@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Ashvik Mumbai Homes
 
-## Project info
+A modern real-estate website for **Ashvik Construction**, Mumbai — browse property listings,
+ongoing/completed projects, renovation services, and get in touch. Built with React, Vite,
+shadcn-ui, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/a3fca666-03c8-47ed-afb5-2c2b4864f661
+## Features
 
-## How can I edit this code?
+- **Home page** — hero with property search bar, featured listings (sale/rent), services
+  overview, testimonials, and contact CTA.
+- **Listings page** — searchable/filterable property catalogue (BHK, budget, locality,
+  furnishing status) with property cards.
+- **Property detail pages** — full specs (area, bathrooms, parking, floor plan info),
+  image gallery, and enquiry CTA for every property.
+- **Projects page** — ongoing and completed construction projects with status and timelines.
+- **Services page** — construction, renovation, interior design, and consultancy offerings.
+- **About page** — company profile, milestones, and team values.
+- **Contact page** — contact form, phone/email details, and office address/map.
+- Client-side routing via React Router, fully responsive mobile-first design, dark UI
+  accents with the shadcn component set.
 
-There are several ways of editing your application.
+## Tech stack
 
-**Use Lovable**
+- **Vite 5** + **React 18** + **TypeScript 5**
+- **React Router DOM 6** (client-side routing)
+- **shadcn-ui** (Radix UI primitives), **Tailwind CSS 3**, **tailwindcss-animate**
+- **TanStack React Query**, **React Hook Form** + **Zod** validation
+- **lucide-react** icons, **date-fns**, **recharts**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a3fca666-03c8-47ed-afb5-2c2b4864f661) and start prompting.
+## Quick start
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Prerequisites: Node.js 18+ and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Clone the repository
+git clone https://github.com/girishlade111/ashvik-mumbai-homes.git
+cd ashvik-mumbai-homes
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Install dependencies
+npm install --legacy-peer-deps
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Start the dev server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app runs at `http://localhost:8080` (see `vite.config.ts`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build
 
-**Use GitHub Codespaces**
+```sh
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Produces a static `dist/` folder. Because the site is served from the
+`/ashvik-mumbai-homes` sub-path on GitHub Pages, the production build uses
+`--base=/ashvik-mumbai-homes/` and the router uses a matching `basename`.
 
-## What technologies are used for this project?
+## Project structure
 
-This project is built with:
+```
+├── index.html            # Entry HTML
+├── public/               # Static assets (favicon, robots.txt, images)
+├── src/
+│   ├── main.tsx          # App bootstrap
+│   ├── App.tsx           # Router + providers (basename for Pages sub-path)
+│   ├── pages/            # Index, Listings, PropertyDetail, Projects,
+│   │                     # Services, About, Contact, NotFound
+│   ├── components/       # Header, Footer, PropertyCard, SearchBar, ui/*
+│   ├── hooks/            # Shared React hooks
+│   ├── lib/              # Utility helpers
+│   ├── assets/           # Images
+│   ├── index.css / App.css
+├── vite.config.ts        # Vite config (@ alias, dev server)
+├── tailwind.config.ts    # Tailwind theme config
+└── tsconfig*.json        # TypeScript configs
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Env vars
 
-## How can I deploy this project?
+None — all listing/project data is bundled statically. No backend or API keys required.
 
-Simply open [Lovable](https://lovable.dev/projects/a3fca666-03c8-47ed-afb5-2c2b4864f661) and click on Share -> Publish.
+## Deploy notes
 
-## Can I connect a custom domain to my Lovable project?
+- Static site — any static host works (GitHub Pages, Cloudflare Pages, Netlify, Vercel).
+- Live on GitHub Pages at `https://girishlade111.github.io/ashvik-mumbai-homes/`
+  (built output copied to the repo root on `main`; Pages serves the root).
+- **SPA refresh caveat:** GitHub Pages has no rewrite rules, so refreshing a deep route
+  like `/listings` falls back to the 404 page. In-app navigation works normally.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Built by Girish Lade — [ladestack.in](https://ladestack.in)
